@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter { // 1-2. Sprin
         ;
 
         http.authorizeRequests() // 2-1. Security 처리를 하는데 HttpServletRequest를 이용한다는 뜻.
-                .mvcMatchers("/", "/members/**", "/item/**", "/img/**", "/images/**","/company/**","/api/**","/board/**", "/support/**").permitAll() // 2-2. 해당 URL은 인증(로그인) 없이 접근 할 수 있도록 설정.
+                .mvcMatchers("/", "/members/**", "/item/**", "/img/**", "/images/**","/company/**","/api/**","/board/**", "/support/**", "/goods/**").permitAll() // 2-2. 해당 URL은 인증(로그인) 없이 접근 할 수 있도록 설정.
                 .mvcMatchers("/admin/**").hasRole("ADMIN") // 2-3. /admin으로 시작하는 경로는 ADMIN 권한만 접근 가능
                 .anyRequest().authenticated() // 2-4. 2-2, 2-3에서 설정한 경로를 제외한 나머지 경로는 모두 인증을 요구한다는 의미.
         ;
