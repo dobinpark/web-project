@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>로그인</title>
+
+    <!-- 사용자 css 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+            .error {
+                color: #bd2130;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+    </th:block>
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+            $(document).ready(function() {
+
+            });
+        </script>
+    </th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+
+        <div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-5 shadow">
+                    <div class="modal-header p-5 pb-4 border-bottom-0">
+                        <!-- <h5 class="modal-title">Modal title</h5> -->
+                        <h2 class="fw-bold mb-0">로그인</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body p-5 pt-0">
+                        <!-- 참고 : Form 로그인시 input의 id, name 꼭 적어줘야 한다. -->
+                        <form role="form" method="post" action="/members/login">
+                            <div class="form-group mb-3">
+                                <label th:for="email">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="이메일을 입력하여 주십시오.">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label th:for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호를 입력하여 주십시오.">
+                            </div>
+
+                            <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+                            <button class="w-100 mb-2 btn btn-lg rounded-4 btn btn-primary">로그인</button>
+                            <button class="w-100 mb-2 btn btn-lg rounded-4 btn btn-primary" type="button" onClick="location.href='/members/new'">회원가입</button>
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+                            <!--
+                            <hr class="my-3">
+                            <h2 class="fs-5 fw-bold mb-3">SNS 로그인</h2>
+                            <button th:type="button" class="btm_image" id="img_btn1"><img src="img/Kakao_Icon.jpg" th:src="@{/img/Kakao_Icon.jpg}" width="80px" height="80px" th:background="white"></button>
+                            <button th:type="button" class="btm_image" id="img_btn2"><img src="img/Naver_Icon.jpg" th:src="@{/img/Naver_Icon.jpg}" width="80px" height="80px" th:background="white"></button>
+                            <button th:type="button" class="btm_image" id="img_btn3"><img src="img/Google_Icon.jpg" th:src="@{/img/Google_Icon.jpg}" width="80px" height="80px" th:background="white"></button>
+                            <button th:type="button" class="btm_image" id="img_btn4"><img src="img/Facebook_Icon.jpg" th:src="@{/img/Facebook_Icon.jpg}" width="80px" height="80px" th:background="white"></button>
+                            -->
+
+                            <!--
+                               * CSRF[Cross Site Request Forgery]
+                                -> 사이트간 위조 요청으로 사용자가 자신의 의지와 상관없이 해커가 의도한 대로 수정, 등록, 삭제 등의 행위를
+                                        웹사이트에 요청하게 하는 공격을 말합니다.
+                                -> 스프링 시큐리티를 사용할 경우 기본적으로 CSRF(Cross Site Request Forgery)를 방어하기 위해
+                                     모든 POST 방식의 데이터 전송에는 CSRF 토큰 값이 있어야 합니다.
+                                   CSRF 토큰은 실제 서버에서 허용한 요청이 맞는지 확인하기 위한 토큰입니다.
+                                     사용자의 세션에 임의의 값을 저장하여 요청마다 그 값을 포함하여 전송하면 서버에서 세션에 저장된 값과
+                                     요청이 온 값이 일치하는지 확인하여 CSRF를 방어합니다.
+                                ->
+                             -->
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

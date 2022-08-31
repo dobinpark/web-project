@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>고객상담</title>
+
+    <!-- 사용자 css 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+            .error {
+                color: #bd2130;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+    </th:block>
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+            $(document).ready(function() {
+            });
+        </script>
+    </th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+
+        <h2>고객상담</h2>
+        <br>
+        <h4>상품 등록을 원할 시, 연락주시면 감사하겠습니다.</h4>
+
+        <div class="supoport-service">
+            <div class="sec-call">
+                <ul class="service-list">
+                    <li class="1">
+                        <strong>전화상담
+                            <a>010 - 4139 - 6361</a>
+                        </strong>
+                        <p>
+                        월 ~ 금 (오전9시 ~ 오후6시)
+                        <br>
+                        토요일 (오전9시 ~ 오후1시)
+                        </p>
+                    </li>
+
+                    <li class="2">
+                        <strong>이메일상담
+                        </strong>
+                        <p>
+                        ff5026@naver.com
+                        <br>
+                        ff09560810@gmail.com
+                        </p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

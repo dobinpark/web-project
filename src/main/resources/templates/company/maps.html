@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>회사위치</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=jogajib82r&callback=CALLBACK_FUNCTION"></script>
+</head>
+<body>
+    <div layout:fragment="content" class="content">
+        <div id="map" style="width:100%;height:400px;"></div>
+
+        <script>
+            var mapOptions = {
+                center: new naver.maps.LatLng(36.842958, 127.065343),
+                zoom: 15,
+                zoomControl: true
+            };
+
+            var map = new naver.maps.Map('map', mapOptions);
+
+            var markerOptions = {
+                position: new naver.maps.LatLng(36.842958, 127.065343),
+                map: map
+            };
+
+            var marker = new naver.maps.Marker(markerOptions);
+        </script>
+        <ul>
+            <br>
+            <li>주소 : 충청남도 아산시 음봉로 515-37(포스코 더샵 레이크 시티 3차)</li>
+            <li>전화번호 : 010 - 4139 - 6361</li>
+        </ul>
+    </div>
+</body>
+</html>

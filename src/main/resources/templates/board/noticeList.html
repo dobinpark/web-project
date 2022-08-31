@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>공지사항</title>
+
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+
+        </script>
+    </th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+
+        <h2>공지사항</h2>
+        <div>총 건수 : <span th:text="${noticeBoards.totalElements}"></span></div>
+
+        <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/noticeList}">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="searchText" class="sr-only">검색</label>
+                <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}">
+            </div>
+            <button type="submit" class="btn btn-light mb-2">검색</button>
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="noticeBoard : ${noticeBoards}">
+                    <td th:text="${noticeBoard.id}">번호</td>
+                    <td><a th:text="${noticeBoard.title}" th:href="@{/board/noticeForm(id=${noticeBoard.id})}">제목</a></td>
+                    <td th:text="${noticeBoard.member}">작성자</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${1 == noticeBoards.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#"
+                       th:href="@{/board/noticeList(page=${noticeBoards.pageable.pageNumber - 1},searchText=${param.searchText})}"
+                       tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item" th:classappend="${i == noticeBoards.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                    <a class="page-link" href="#" th:href="@{/board/noticeList(page=${i - 1},searchText=${param.searchText})}" th:text="${i}">1</a>
+                </li>
+                <li class="page-item" th:classappend="${noticeBoards.totalPages == noticeBoards.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#" th:href="@{/board/noticeList(page=${noticeBoards.pageable.pageNumber + 1},searchText=${param.searchText})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="text-right">
+            <a type="button" class="btn btn-primary" th:href="@{/board/noticeForm}">쓰기</a>
+        </div>
+
+    </div>
+</body>
+</html>

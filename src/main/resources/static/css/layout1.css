@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+html {
+    position: relative;
+    min-height: 50%;
+    margin: 0;
+}
+
+body {
+    min-height: 50%;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.content {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    margin-left: 300px;
+    margin-right: 300px;
+}

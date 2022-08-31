@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <title>대표연혁</title>
+
+    <!-- 사용자 스크립트 추가 -->
+    <th:block layout:fragment="script">
+        <script th:inline="javascript"></script>
+    </th:block>
+
+    <!-- 사용자 CSS 추가 -->
+    <th:block layout:fragment="css"></th:block>
+</head>
+<body>
+    <div layout:fragment="contnent" class="content">
+
+        <h1>여기는 대표 연혁입니다.</h1>
+    </div>
+</body>
+</html>

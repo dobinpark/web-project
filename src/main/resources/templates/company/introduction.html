@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>소개</title>
+
+    <!-- 사용자 css 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+            .error {
+                color: #bd2130;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+
+            .img1 {
+                width: 1280px;
+                height: 600px;
+            }
+        </style>
+    </th:block>
+    <th:block layout:fragment="script">
+
+        <script th:inline="javascript">
+            $(document).ready(function() {
+            });
+        </script>
+    </th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+
+        <div class="columns">
+            <img src="../static/img/반명함.jpg" class="img1" alt="사진"/>
+        </div>
+
+        <div class="nine columns main-col">
+
+            <h2>-저를 소개합니다-</h2>
+            <br>
+            <p>저는 매일데이를 운영하는 감성 개발자입니다.<br>
+                매일데이는 직장인들의 고충을 커뮤니티를 통해 서로의 이야기를 하며<br>
+                공감대를 형성할 수 있는 장입니다.<br><br>
+                단순하지만 단순한 곳에 깊이가 있는 커뮤니티를 만들기 위해<br>
+                항상 저의 부족함을 인정하고 끊임없이 개발하고 성장하고자 합니다.<br>
+                그것이 제가 지금까지 걸어온 개발자의 길이자 매일데이의 가치입니다.
+            </p>
+            <br>
+            <h2>-소개-</h2>
+            <p class="address">
+                <span><h3>박 도 빈</h3></span>
+                <span>30, republic of Korea</span><br>
+                <span>+82 01-0000-0000</span><br>
+                <span>ff5026@naver.com</span>
+            </p>
+        </div> <!-- end .main-col -->
+    </div>
+</body>
+</html>

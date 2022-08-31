@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>매일데이</title>
+
+    <!-- 사용자 CSS 추가 -->
+    <th:block layout:fragment="css">
+        <style>
+            .carousel-inner > .item {
+                height: 350px;
+            }
+
+            .margin {
+                margin-bottom:30px;
+            }
+
+            .banner {
+                height: 350px;
+                position: absolute; top:0; left: 0;
+                width: 100%;
+            }
+
+            .card-text {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            a:hover {
+                text-decoration:none;
+            }
+
+            .center {
+                text-align:center;
+            }
+        </style>
+    </th:block>
+</head>
+<body>
+    <div class="content" layout:fragment="content">
+
+        <div class="container p-0">
+            <div class="p-4 p-md-5 mb-5 text-white rounded bg-dark">
+                <div class="col-md-0 px-0">
+                    <h1 class="display-3 fst-italic">대한민국을 책임지는 당신</h1>
+                    <p class="lead my-3"><h3>직장인들의 새로운 활력소,<br>
+                                             이곳이 바로 매일데이 커뮤니티입니다.</h3>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-primary">공지사항</strong>
+                            <h5 class="mb-2">[공지] 7/01(금) 긴급 패치 진행 안내</h5>
+                            <div class="mb-1 text-muted">2022.07.01</div>
+                            <a href="#" class="stretched-link" th:href="@{/board/noticeList}">게시글 바로가기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-success">자유게시판</strong>
+                            <h5 class="mb-2">제목</h5>
+                            <div class="mb-1 text-muted">2022.07.01</div>
+                            <a href="#" class="stretched-link" th:href="@{/board/freeList}">게시글 바로가기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active item">
+                        <img class="d-block w-100 banner" src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png" alt="first-side">
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
+            <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
+                <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
+            </div>
+
+            <div class="row">
+                <th:block th:each="item, status: ${items.getContent()}">
+                    <div class="col-md-4 margin">
+                        <div class="card">
+                            <a th:href="'/item/' +${item.id}" class="text-dark">
+                                <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
+                                <div class="card-body">
+                                    <h4 class="card-title">[[${item.itemNm}]]</h4>
+                                    <p class="card-text">[[${item.itemDetail}]]</p>
+                                    <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+
+            <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+                <ul class="pagination justify-content-center">
+
+                    <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
+                        <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number - 1}}" aria-label='Previous' class="page-link">
+                            <span aria-hidden='true'>Previous</span>
+                        </a>
+                    </li>
+
+                    <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page - 1}?'active':''">
+                        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page - 1}}" th:inline="text" class="page-link">[[${page}]]</a>
+                    </li>
+
+                    <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
+                        <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                            <span aria-hidden='true'>Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
