@@ -24,7 +24,6 @@ public class MemberController {
 
     @GetMapping(value = "/new")
     public String memberForm(Model model) {
-        // 1-1. 빈 껍데기 MemberFormDto를 view로 넘겨준다.(유효성 검사를 위해)
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/memberForm";
     }
@@ -36,15 +35,11 @@ public class MemberController {
             return "member/memberForm";
         }
 
-        // 1-5. try로 감싸준다.
         try {
-            // 1-2. view에서 넘어온 MemberFormDto에서 password는 passwordEncoder로 인코딩해서 Member Entity를 반환한다.
             Member member = Member.createMember(memberFormDto, passwordEncoder);
-            // 1-3. 회원 가입
             memberService.saveMember(member);
 
         } catch (IllegalStateException e) {
-            // 1-6. 에러 발생시
             model.addAttribute("errorMessage", e.getMessage());
             return "member/memberForm";
         }

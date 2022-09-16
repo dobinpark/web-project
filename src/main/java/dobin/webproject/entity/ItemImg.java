@@ -16,13 +16,13 @@ public class ItemImg extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String imgName; // 1-2. 이미지 파일명
+    private String imgName;
 
-    private String oriImgName; // 1-3. 원본 이미지 파일명
+    private String oriImgName;
 
-    private String imgUrl; // 1-4. 이미지 조회 경로
+    private String imgUrl;
 
-    private String repImgYn; // 1-5. 대표 이미지 여부
+    private String repImgYn;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")

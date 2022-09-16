@@ -24,17 +24,16 @@ public class Member extends BaseEntity {
 
     private String name;
 
-    @Column(unique = true) // 1-1. 회원은 이메일을 통해 유일하게 구분되어야 하기 때문에, 동일한 값이 데이터베이스에 들어올 수 없도록 유니크 제약조건을 걸어준다.
+    @Column(unique = true)
     private String email;
 
     private String password;
 
     private String address;
 
-    @Enumerated(EnumType.STRING) // 1-2. EnumType.STRING
+    @Enumerated(EnumType.STRING)
     private Role role;
 
-    // 1-3. 회원가입 창에서 넘어온 MemberFormDto 데이터를 Member Entity로 변환해 return(이때 비밀번호 암호화)
     public static Member createMember(MemberFormDto memberFormDto,
                                       PasswordEncoder passwordEncoder) {
 
