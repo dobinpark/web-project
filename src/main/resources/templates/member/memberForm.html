@@ -34,11 +34,6 @@
     <div layout:fragment="content">
 
         <form action="/members/new" role="form" method="post" th:object="${memberFormDto}">
-            <div class="form-group">
-                <label th:for="name">이름</label>
-                <input type="text" class="form-control" th:field="*{name}" placeholder="이름을 입력해주세요.">
-                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
-            </div>
 
             <div class="form-group">
                 <label th:for="email">이메일주소</label>
@@ -50,6 +45,29 @@
                 <label th:for="password">비밀번호</label>
                 <input type="password" class="form-control" th:field="*{password}" placeholder="비밀번호를 입력해주세요.">
                 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="name">이름</label>
+                <input type="text" class="form-control" th:field="*{name}" placeholder="이름을 입력해주세요.">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="birthDate">생년월일</label>
+                <input type="date" class="form-control" th:field="*{birthDate}" placeholder="생년월일을 입력해주세요.">
+                <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}" class="fieldError">Incorrect data</p>
+            </div>
+
+            <div class="form-group">
+                <label th:for="phoneNm">휴대폰번호</label>
+                <br>
+                <select name="subject">
+                    <option value="1" selected>010</option>
+                    <option value="2">011</option>
+                    <option value="3">016</option>
+                </select> - <input type="text" name="phoneNm"> - <input type="text" name="phoneNm"></p>
+                <p th:if="${#fields.hasErrors('phoneNm')}" th:errors="*{phoneNm}" class="fieldError">Incorrect data</p>
             </div>
 
             <div class="form-group">

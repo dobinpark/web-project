@@ -22,12 +22,16 @@ public class Member extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
     @Column(unique = true)
     private String email;
 
     private String password;
+
+    private String name;
+
+    private String birthDate;
+
+    private String phoneNm;
 
     private String address;
 
@@ -38,12 +42,13 @@ public class Member extends BaseEntity {
                                       PasswordEncoder passwordEncoder) {
 
         Member member = new Member();
-        member.setName(memberFormDto.getName());
         member.setEmail(memberFormDto.getEmail());
-        member.setAddress(memberFormDto.getAddress());
-
         String password = passwordEncoder.encode(memberFormDto.getPassword()); //비밀번호 암호화
         member.setPassword(password);
+        member.setName(memberFormDto.getName());
+        member.setBirthDate(memberFormDto.getBirthDate());
+        member.setPhoneNm(memberFormDto.getPhoneNm());
+        member.setAddress(memberFormDto.getAddress());
         member.setRole(Role.ADMIN);
 
         return member;
