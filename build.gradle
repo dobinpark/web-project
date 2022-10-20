@@ -5,7 +5,6 @@ buildscript {
     }
 }
 
-
 plugins {
     id 'org.springframework.boot' version '2.5.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -32,6 +31,8 @@ dependencies {
     /* 1. web */
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 
     /* 2. lombok */
     compileOnly 'org.projectlombok:lombok'
