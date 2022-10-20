@@ -49,9 +49,10 @@ MVC
 
 # 📷 Screenshot
 **메인화면**
-
+https://user-images.githubusercontent.com/53501690/196987848-ff2db203-3de3-44cf-ac53-779ad42924c3.JPG
 **회원가입**
-
+https://user-images.githubusercontent.com/53501690/196987741-4439b1e6-c246-43d6-b52d-5fbb19924075.JPG
 **매일굿즈**
-
+https://user-images.githubusercontent.com/53501690/188318928-c1679ed8-dcc6-4b90-a677-7326659018d2.JPG
 **맛집검색**
+https://user-images.githubusercontent.com/53501690/196987460-3f93bb22-78cd-46bd-96ea-dec7bf575194.JPG
