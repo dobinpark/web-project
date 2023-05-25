@@ -21,8 +21,5 @@ body {
 }
 
 .content {
-    margin-bottom: 25px;
-    margin-top: 25px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin: 20px 450px;
 }

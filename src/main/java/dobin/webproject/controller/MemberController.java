@@ -48,12 +48,12 @@ public class MemberController {
 
     @GetMapping(value = "/login")
     public String loginMember() {
-        return "/member/memberLoginForm";
+        return "member/memberLoginForm";
     }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인하여 주십시오.");
-        return "/member/memberLoginForm";
+        return "member/memberLoginForm";
     }
 }

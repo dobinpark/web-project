@@ -2,19 +2,17 @@ package dobin.webproject.entity;
 
 import dobin.webproject.constant.Role;
 import dobin.webproject.dto.MemberFormDto;
-import dobin.webproject.entity.board.FreeBoard;
-import dobin.webproject.entity.board.NoticeBoard;
-import dobin.webproject.entity.board.QnaBoard;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "member")
-@Data
+@Getter @Setter
+@ToString
 public class Member extends BaseEntity {
 
     @Id
@@ -29,6 +27,7 @@ public class Member extends BaseEntity {
 
     private String name;
 
+    @Column(name = "birth_date")
     private String birthDate;
 
     private String phoneNm;

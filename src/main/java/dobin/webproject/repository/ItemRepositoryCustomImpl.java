@@ -13,12 +13,14 @@ import dobin.webproject.entity.QItemImg;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
     private JPAQueryFactory queryFactory;
