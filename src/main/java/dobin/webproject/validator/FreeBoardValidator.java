@@ -1,8 +1,10 @@
 package dobin.webproject.validator;
 
 import dobin.webproject.entity.board.FreeBoard;
+import dobin.webproject.entity.board.NoticeBoard;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.thymeleaf.util.StringUtils;
 

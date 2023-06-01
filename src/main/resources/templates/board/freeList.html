@@ -8,63 +8,53 @@
 
     <!-- 사용자 스크립트 추가 -->
     <th:block layout:fragment="script">
-
         <script th:inline="javascript">
-
         </script>
     </th:block>
 </head>
 <body>
     <div layout:fragment="content">
-
         <h2>자유게시판</h2>
-        <div>총 건수 : <span th:text="${freeBoards.totalElements}"></span></div>
-
-        <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/freeList}">
-            <div class="form-group mx-sm-3 mb-2">
-                <label for="searchText" class="sr-only">검색</label>
-                <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}">
-            </div>
-            <button type="submit" class="btn btn-light mb-2">검색</button>
-        </form>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">작성자</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="freeBoard : ${freeBoards}">
-                    <td th:text="${freeBoard.id}">번호</td>
-                    <td><a th:text="${freeBoard.title}" th:href="@{/board/freeForm(id=${freeBoard.id})}">제목</a></td>
-                    <td th:text="${freeBoard.member}">작성자</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item" th:classappend="${1 == freeBoards.pageable.pageNumber + 1} ? 'disabled'">
-                    <a class="page-link" href="#"
-                       th:href="@{/board/freeList(page=${freeBoards.pageable.pageNumber - 1},searchText=${param.searchText})}"
-                       tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item" th:classappend="${i == freeBoards.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                    <a class="page-link" href="#" th:href="@{/board/freeList(page=${i - 1},searchText=${param.searchText})}" th:text="${i}">1</a>
-                </li>
-                <li class="page-item" th:classappend="${freeBoards.totalPages == freeBoards.pageable.pageNumber + 1} ? 'disabled'">
-                    <a class="page-link" href="#" th:href="@{/board/freeList(page=${freeBoards.pageable.pageNumber + 1},searchText=${param.searchText})}">Next</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="text-right">
-            <a type="button" class="btn btn-primary" th:href="@{/board/freeForm}">쓰기</a>
-        </div>
-
+	    <table class="table table-bordered">
+		    <!-- CONTENTS !-->
+		    <thead>
+		    <tr>
+			    <th class="col-md-1">번호</th>
+			    <th class="col-md-4">글제목</th>
+			    <th class="col-md-3">작성자</th>
+			    <th class="col-md-2">작성일</th>
+			    <th class="col-md-2">수정일</th>
+		    </tr>
+		    </thead>
+		    
+		    <tbody>
+		    <!-- CONTENTS !-->
+		    <tr th:each="board : ${boardList}">
+			    <td th:text="${board.id}"></td>
+			    <td><a th:href="'/board/post/'+${board.id}" th:text="${board.title}"></a></td>
+			    <td th:text="${board.writer}"></td>
+			    <td th:text="${board.createdDate} ? ${#temporals.format(board.createdDate,'yyyy-MM-dd HH:mm')} : ${board.createdDate}"></td>
+			    <td th:text="${board.modifiedDate} ? ${#temporals.format(board.modifiedDate,'yyyy-MM-dd HH:mm')} : ${board.modifiedDate}"></td>
+		    </tr>
+		    </tbody>
+	    </table>
+	    <!-- Pagination -->
+	    <div style="margin: 10px">
+              <span th:each="pageNum : ${pageList}" th:inline="text">
+                  <a th:href="@{'/board/list/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+              </span>
+		    <!-- 글쓰기 버튼 -->
+		    <a style="float: right" class="btn btn-primary" th:href="@{/board/freeForm}">글쓰기</a>
+	    </div>
+	    
+	    <!-- 검색 form -->
+	    <form action="/board/freeSearch" method="GET">
+		    <div>
+			    <input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
+			    <button class="btn btn-primary">검색하기</button>
+		    </div>
+	    
+	    </form>
     </div>
 </body>
 </html>

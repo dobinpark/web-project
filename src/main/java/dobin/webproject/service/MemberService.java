@@ -1,5 +1,6 @@
 package dobin.webproject.service;
 
+import dobin.webproject.dto.MemberFormDto;
 import dobin.webproject.entity.Member;
 import dobin.webproject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,4 +45,19 @@ public class MemberService implements UserDetailsService {
                 .roles(member.getRole().toString())
                 .build();
     }
+
+    /*@Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Member> findName = memberRepository.findByUsername(username);
+        Member member = findName.get();
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if(("admin").equals(username)){
+            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+        }else {
+            authorities.add(new SimpleGrantedAuthority(Role.USER.getValue()));
+        }
+        return new User(member.getUsername(), member.getPassword() , authorities);
+    }*/
 }

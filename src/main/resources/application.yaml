@@ -6,7 +6,3 @@ naver:
   client:
     id: fg6a5NWa3mGSAw3hO8m_
     secret: U6Rl5SgtsU
-
-spring:
-  main:
-    allow-bean-definition-overriding: true

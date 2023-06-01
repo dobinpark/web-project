@@ -1,15 +1,17 @@
 package dobin.webproject.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-@Getter @Setter
+@Data
+@RequiredArgsConstructor
 public class MemberFormDto {
+
+    private Long id;
 
     @NotEmpty(message = "이메일은 필수 입력 값입니다.")
     @Email(message = "이메일 형식으로 입력하여 주십시오.")

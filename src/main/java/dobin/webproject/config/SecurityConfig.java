@@ -1,6 +1,7 @@
 package dobin.webproject.config;
 
 import dobin.webproject.service.MemberService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,12 +16,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    MemberService memberService;
 
+    private final MemberService memberService;
+
+    // 비밀번호 암호화
     @Bean
-    public PasswordEncoder passwordEncoder() { // 1-3. 비밀번호를 데이터베이스에 저장시 비밀번호를 암호화 해주는 PasswordEncoder(BCryptPasswordEncoder)를 빈으로 등록
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -48,11 +51,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
     }
 
+    // 인증 무시 -> static 디렉토리의 파일들은 항상 인증 무시 (통과)
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/images/**", "/scripts/**");
     }
 
+    // 모든 인증을 처리하기 위한 AuthenticationManager
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(memberService)

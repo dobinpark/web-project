@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>수정하기</title>
+	
+	<!-- 사용자 스크립트 추가 -->
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+		</script>
+	</th:block>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h2>자유게시판</h2>
+		<main role="main" class="container">
+			<div class="starter-template">
+				<form role="update-form" th:action="@{'/board/freeForm/freeEdit/' + ${boardDto.id}}" method="post">
+					<input type="hidden" name="_method" value="put"/>
+					<input type="hidden" name="id" th:value="${boardDto.id}"/>
+					
+					제목 : <input type="text" name="title" th:value="${boardDto.title}"> <br>
+					작성자 : <input type="text" name="writer" th:value="${boardDto.writer}"> <br>
+					<textarea name="content" th:text="${boardDto.content}"></textarea><br>
+					
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary">수정</button>
+						<button type="submit" class="btn btn-warning">취소</button>
+					</div>
+				</form>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

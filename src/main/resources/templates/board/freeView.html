@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>글 상세보기</title>
+	
+	<!-- 사용자 스크립트 추가 -->
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+		</script>
+	</th:block>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h2>자유게시판</h2>
+		<table class ="table table-bordered">
+			<thead>
+			<caption>글 읽기</caption>
+			</thead>
+			<tbody>
+			<tr>
+				<th>제목</th>
+				<td th:text="${boardDto.title}"></td>
+			</tr>
+			<tbody>
+			<tr>
+				<th>작성자</th>
+				<td th:text="${boardDto.writer}"></td>
+			</tr>
+			<tr>
+				<th>작성일</th>
+				<td th:inline="text">[[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</td>
+			</tr>
+			<tr>
+				<th>본문 내용</th>
+				<td th:text="${boardDto.content}"></td>
+			</tr>
+			</tbody>
+		</table>
+		
+		<!-- 수정/삭제 -->
+		<div>
+			<a th:href="@{'/board/freeForm/freeEdit/' + ${boardDto.id}}">
+				<button class="btn btn-primary">수정</button>
+			</a>
+			<form id="delete-form" th:action="@{'/board/post/' + ${boardDto.id}}" method="post">
+				<input type="hidden" name="_method" value="delete"/>
+				<button class="btn btn-warning" id="delete-btn">삭제</button>
+			</form>
+		</div>
+		
+		<!-- 변수 셋팅 -->
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			var boardDto = /*[[${boardDto}]]*/ "";
+			/*]]>*/
+		</script>
+	</div>
+</body>
+</html>

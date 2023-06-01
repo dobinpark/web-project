@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -30,7 +31,7 @@ public class MemberController {
 
     @PostMapping(value = "/new")
     public String newMember(@Valid MemberFormDto memberFormDto,
-                            BindingResult bindingResult, Model model) {
+                            BindingResult bindingResult, Model model, HttpSession session) {
         if (bindingResult.hasErrors()) {
             return "member/memberForm";
         }
@@ -38,6 +39,9 @@ public class MemberController {
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
             memberService.saveMember(member);
+
+            // 로그인 성공 후 세션에 사용자 정보 저장
+            session.setAttribute("loggedInMember", member);
 
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage());
