@@ -19,7 +19,7 @@
 			    <h1>게시글 등록</h1>
 		    </div>
 		    <div class="starter-template">
-			    <form class="form-horizontal" th:action="@{/board/post}" method="post">
+			    <form class="form-horizontal" th:action="@{/board/qnaForm}" method="post">
 				    <div class="form-group">
 					    <label style="float: left" for="title" class="col-sm-2 control-label">제목</label>
 					    <div class="col-sm-10" style="margin-top: 10px;">
@@ -42,7 +42,7 @@
 				    </div>
 				    
 				    <div class="btn_wrap text-center">
-					    <a th:href="@{/board/list}" class="btn btn-secondary">뒤로 가기</a>
+					    <a th:href="@{/board/qnaList}" class="btn btn-secondary">뒤로 가기</a>
 					    <button type="input" class="btn btn-primary waves-effect waves-light">저장 하기</button>
 				    </div>
 			    </form>

@@ -42,10 +42,10 @@
 		
 		<!-- 수정/삭제 -->
 		<div>
-			<a th:href="@{'/board/post/edit/' + ${boardDto.id}}">
+			<a th:href="@{'/board/noticeForm/noticeEdit/' + ${boardDto.id}}">
 				<button class="btn btn-primary">수정</button>
 			</a>
-			<form id="delete-form" th:action="@{'/board/post/' + ${boardDto.id}}" method="post">
+			<form id="delete-form" th:action="@{'/board/noticeForm/' + ${boardDto.id}}" method="post">
 				<input type="hidden" name="_method" value="delete"/>
 				<button class="btn btn-warning" id="delete-btn">삭제</button>
 			</form>

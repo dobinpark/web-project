@@ -17,7 +17,7 @@
 		<h2>질문게시판</h2>
 		<main role="main" class="container">
 			<div class="starter-template">
-				<form role="update-form" th:action="@{'/board/post/edit/' + ${boardDto.id}}" method="post">
+				<form role="update-form" th:action="@{'/board/qnaForm/qnaEdit/' + ${boardDto.id}}" method="post">
 					<input type="hidden" name="_method" value="put"/>
 					<input type="hidden" name="id" th:value="${boardDto.id}"/>
 					

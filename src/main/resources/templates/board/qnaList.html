@@ -8,9 +8,7 @@
 
     <!-- 사용자 스크립트 추가 -->
     <th:block layout:fragment="script">
-
         <script th:inline="javascript">
-
         </script>
     </th:block>
 </head>
@@ -33,7 +31,7 @@
 		    <!-- CONTENTS !-->
 		    <tr th:each="board : ${boardList}">
 			    <td th:text="${board.id}"></td>
-			    <td><a th:href="'/board/post/'+${board.id}" th:text="${board.title}"></a></td>
+			    <td><a th:href="'/board/qnaForm/'+${board.id}" th:text="${board.title}"></a></td>
 			    <td th:text="${board.writer}"></td>
 			    <td th:text="${board.createdDate} ? ${#temporals.format(board.createdDate,'yyyy-MM-dd HH:mm')} : ${board.createdDate}"></td>
 			    <td th:text="${board.modifiedDate} ? ${#temporals.format(board.modifiedDate,'yyyy-MM-dd HH:mm')} : ${board.modifiedDate}"></td>
@@ -43,10 +41,10 @@
 	    <!-- Pagination -->
 	    <div style="margin: 10px">
 	              <span th:each="pageNum : ${pageList}" th:inline="text">
-	                  <a th:href="@{'/board/list/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+	                  <a th:href="@{'/board/qnaList/?page=' + ${pageNum}}">[[${pageNum}]]</a>
 	              </span>
 		    <!-- 글쓰기 버튼 -->
-		    <a style="float: right" class="btn btn-primary" th:href="@{/board/post}">글쓰기</a>
+		    <a style="float: right" class="btn btn-primary" th:href="@{/board/qnaForm}">글쓰기</a>
 	    </div>
 	    
 	    <!-- 검색 form -->
