@@ -59,7 +59,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/maeil
     username: "root"
-    password: "0000"
+    password: "ddgh0919"
   jpa:
     hibernate:
       ddl-auto: create
