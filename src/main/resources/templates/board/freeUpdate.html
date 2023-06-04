@@ -14,7 +14,6 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<h2>자유게시판</h2>
 		<main role="main" class="container">
 			<div class="starter-template">
 				<form role="update-form" th:action="@{'/board/freeForm/freeEdit/' + ${boardDto.id}}" method="post">

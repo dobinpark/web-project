@@ -14,7 +14,6 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<h2>질문게시판</h2>
 		<main role="main" class="container">
 			<div class="starter-template">
 				<form role="update-form" th:action="@{'/board/qnaForm/qnaEdit/' + ${boardDto.id}}" method="post">

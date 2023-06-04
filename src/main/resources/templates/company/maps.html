@@ -7,33 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>회사위치</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=jogajib82r&callback=CALLBACK_FUNCTION"></script>
 </head>
 <body>
     <div layout:fragment="content" class="content">
         <h2>찾아오는길</h2>
-          
-        <div id="map" style="width:100%;height:400px;"></div>
 
+        <div id="map" style="width:100%;height:350px;"></div>
+
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69b4a54286fee00e40a4f8b0187294a4"></script>
         <script>
-            var mapOptions = {
-                center: new naver.maps.LatLng(36.842958, 127.065343),
-                zoom: 15,
-                zoomControl: true
-            };
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                mapOption = {
+                    center: new kakao.maps.LatLng(36.786, 127.1026), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
 
-            var map = new naver.maps.Map('map', mapOptions);
+            // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+            var map = new kakao.maps.Map(mapContainer, mapOption);
 
-            var markerOptions = {
-                position: new naver.maps.LatLng(36.842958, 127.065343),
-                map: map
-            };
+            // 마커가 표시될 위치입니다
+            var markerPosition  = new kakao.maps.LatLng(36.786, 127.1026);
 
-            var marker = new naver.maps.Marker(markerOptions);
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
         </script>
         <ul>
             <br>
-            <li>주소 : 충청남도 아산시 음봉로 515-37(포스코 더샵 레이크 시티 3차)</li>
+            <li>주소 : 충청남도 아산시 배방읍 장재리 1709</li>
             <li>전화번호 : 010 - 4139 - 6361</li>
         </ul>
     </div>
