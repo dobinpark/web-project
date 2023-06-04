@@ -1,47 +1,7 @@
+
 spring:
-  config:
-    activate:
-      on-profile: local
-  datasource:
-    url: "jdbc:h2:mem:maeil;MODE=MARIADB;NON_KEYWORDS=USER"
-    username: "sa"
-    password: ""
-    driver-class-name: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-        dialect: org.hibernate.dialect.H2Dialect
   main:
     allow-bean-definition-overriding: true
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: true
-  thymeleaf:
-    cache: false
-  servlet:
-    multipart:
-      max-file-size: 20MB
-      max-request-size: 100MB
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-
-itemImgLocation: C:/shop/item
-uploadPath: file:///C:/shop/
-
-logging:
-  level:
-    org.hibernate.type.descriptor.sql: trace
-
----
-
-spring:
   config:
     activate:
       on-profile: dev
@@ -58,8 +18,6 @@ spring:
         format_sql: true
         default_batch_fetch_size: 1000
         dialect: org.hibernate.dialect.MySQL8Dialect
-  main:
-    allow-bean-definition-overriding: true
   mvc:
     hiddenmethod:
       filter:
