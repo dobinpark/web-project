@@ -7,7 +7,6 @@ import dobin.webproject.dto.kakao.KakaoDto;
 import dobin.webproject.entity.kakao.KakaoEntity;
 import dobin.webproject.repository.kakao.KakaoRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -33,7 +32,7 @@ public class KakaoService {
         String apiUrl = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + search;
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "KakaoAK 0a931d3e53412cb779f034fc86ec4c96");
+        headers.set("Authorization", "KakaoAK 69b4a54286fee00e40a4f8b0187294a4");
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
         ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.GET, entity, String.class);
 
