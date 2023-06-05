@@ -23,7 +23,7 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public Long saveItem(ItemFormDto itemFormDto) throws Exception {
+    public Long saveItem(ItemFormDto itemFormDto) {
 
         Item item = itemFormDto.createItem();
         itemRepository.save(item);
@@ -34,16 +34,17 @@ public class ItemService {
     @Transactional(readOnly = true)
     public ItemFormDto getItemDtl(Long itemId) {
 
-        Item item = itemRepository.findById(itemId).orElseThrow(EntityNotFoundException::new);
-
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new EntityNotFoundException("Item not found with id: " + itemId));
         ItemFormDto itemFormDto = ItemFormDto.of(item);
 
         return itemFormDto;
     }
 
-    public Long updateItem(ItemFormDto itemFormDto) throws Exception {
+    public Long updateItem(ItemFormDto itemFormDto) {
 
-        Item item = itemRepository.findById(itemFormDto.getId()).orElseThrow(EntityNotFoundException::new);
+        Item item = itemRepository.findById(itemFormDto.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Item not found with id: " + itemFormDto.getId()));
         item.updateItem(itemFormDto);
 
         return item.getId();
