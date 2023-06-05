@@ -146,19 +146,17 @@
             .wd50{
                 height:auto;
                 width:50%;
+	            margin: 0 auto; /* 가운데로 정렬 */
             }
         </style>
     </th:block>
 </head>
 <body>
-    <div layout:fragment="content" style="margin-left:25%;margin-right:25%">
+    <div layout:fragment="content" style="">
 
         <input type="hidden" id="itemId" th:value="${item.id}">
 
         <div class="d-flex">
-            <div class="repImgDiv">
-                <img th:src="${item.itemImgDtoList[0].imgUrl}" class = "rounded repImg" th:alt="${item.itemNm}">
-            </div>
             <div class="wd50">
                 <span th:if="${item.itemSellStatus == T(dobin.webproject.constant.ItemSellStatus).SELL}" class="badge badge-primary mgb-15">
                     판매중
@@ -203,10 +201,6 @@
                 <hr class="my-4">
                 <p class="lead" th:text="${item.itemDetail}"></p>
             </div>
-        </div>
-
-        <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
-            <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
         </div>
 
     </div>

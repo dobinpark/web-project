@@ -9,7 +9,6 @@ import dobin.webproject.dto.MainItemDto;
 import dobin.webproject.dto.QMainItemDto;
 import dobin.webproject.entity.Item;
 import dobin.webproject.entity.QItem;
-import dobin.webproject.entity.QItemImg;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -87,7 +86,6 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
     @Override
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         QItem item = QItem.item;
-        QItemImg itemImg = QItemImg.itemImg;
 
         QueryResults<MainItemDto> results = queryFactory
                 .select(
@@ -95,12 +93,9 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                                 item.id,
                                 item.itemNm,
                                 item.itemDetail,
-                                itemImg.imgUrl,
                                 item.price)
                 )
-                .from(itemImg)
-                .join(itemImg.item, item)
-                .where(itemImg.repImgYn.eq("Y"))
+                .from(item)
                 .where(itemNmLike(itemSearchDto.getSearchQuery()))
                 .orderBy(item.id.desc())
                 .offset(pageable.getOffset())

@@ -14,13 +14,11 @@ public class CartDetailDto {
 
     private int count;
 
-    private String imgUrl;
 
-    public CartDetailDto(Long cartItemId, String itemNm, int price, int count, String imgUrl) {
+    public CartDetailDto(Long cartItemId, String itemNm, int price, int count) {
         this.cartItemId = cartItemId;
         this.itemNm = itemNm;
         this.price = price;
         this.count = count;
-        this.imgUrl = imgUrl;
     }
 }

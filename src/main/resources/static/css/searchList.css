@@ -1,0 +1,83 @@
+/*
+전체 선택자 : *{내용;} -> 모든 태그 선택
+태그 선택자 : 태그{내용;} -> 지정한 태그 선택
+id 선택자 : #아이디{내용;} -> 특정 id 태그 선택(중복없이)
+class 선택자 : .클래그{내용;} -> 특정 class 태그 선택(다중 선택)
+속성 선택자 : 선택자[속성 = 값] -> 특정 속성 또는 속성값 태그 선
+ */
+
+nav {
+    width: 100%;
+    height: 57px;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 20px;
+}
+th {
+    padding: 5px;
+    border-block: 1px solid skyblue;
+    writing-mode: horizontal-tb;
+    background-color: #deebf7;
+    font-weight: bold;
+    text-align: center;
+}
+td {
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.reservation, .maps {
+    color: black;
+    border: #ddd;
+    padding: 3px;
+    font-size: 20px;
+    background: skyblue;
+}
+
+#placeName {
+    text-align: center;
+    font-size: 25px;
+}
+
+/* 모달창 스타일 */
+.modal {
+    display: none; /* 모달창 숨김 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경 어둡게 */
+    z-index: 9999; /* 모달창이 가장 위에 오도록 z-index 설정 */
+}
+
+.modal-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#confirmBtn, #cancelBtn {
+    float: left;
+}

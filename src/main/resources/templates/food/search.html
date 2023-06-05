@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum=1.0, user-scalable=no">
+	<title>맛집 검색</title>
+	<link rel="stylesheet" type="text/css" href="/css/search.css">
+	
+	<th:block layout:fragment="css">
+	</th:block>
+	<th:block layout:fragment="js">
+	</th:block>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+			<article>
+				<form th:action="@{/places}" method="GET">
+					<input type="text" id="search" name="search" placeholder="ex) 강남 갈비집">
+					<button type="submit"><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></button>
+				</form>
+			</article>
+		</div>
+	</div>
+</body>
+</html>

@@ -10,32 +10,6 @@
     <!-- 사용자 스크립트 추가 -->
     <th:block layout:fragment="script">
         <script th:inline="javascript">
-
-            $(document).ready(function(){
-                var errorMessage = [[${errorMessage}]];
-                if(errorMessage != null){
-                    alert(errorMessage);
-                }
-
-                bindDomEvent();
-
-            });
-
-            function bindDomEvent() {
-                $(".custom-file-input").on("change", function() {
-                    var fileName = $(this).val().split("\\").pop();  //이미지 파일명
-                    var fileExt = fileName.substring(fileName.lastIndexOf(".")+1); // 확장자 추출
-                    fileExt = fileExt.toLowerCase(); //소문자 변환
-
-                    if(fileExt != "jpg" && fileExt != "jpeg" && fileExt != "gif"
-                        && fileExt != "png" && fileExt != "bmp") {
-                        alert("이미지 파일만 등록이 가능합니다.");
-                        return;
-                    }
-
-                    $(this).siblings(".custom-file-label").html(fileName);
-                });
-            }
         </script>
     </th:block>
 
@@ -103,25 +77,6 @@
                 <textarea class="form-control" aria-label="With textarea" th:field="*{itemDetail}"></textarea>
             </div>
             <p th:if="${#fields.hasErrors('itemDetail')}" th:errors="*{itemDetail}" class="fieldError">Incorrect data</p>
-
-            <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
-                <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
-                    <div class="custom-file img-div">
-                        <input type="file" class="custom-file-input" name="itemImgFile">
-                        <label class="custom-file-label" th:text="상품이미지 + ${num}"></label>
-                    </div>
-                </div>
-            </div>
-
-            <div th:if = "${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
-                <div class="form-group" th:each="itemImgDto, status: ${itemFormDto.itemImgDtoList}">
-                    <div class="custom-file img-div">
-                        <input type="file" class="custom-file-input" name="itemImgFile">
-                        <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">
-                        <label class="custom-file-label" th:text="${not #strings.isEmpty(itemImgDto.oriImgName)} ? ${itemImgDto.oriImgName} : '상품이미지' + ${status.index+1}"></label>
-                    </div>
-                </div>
-            </div>
 
             <div th:if="${#strings.isEmpty(itemFormDto.id)}" style="text-align: center">
                 <button th:action="@{'/admin/item/new'}" type="submit" class="btn btn-primary">저장</button>

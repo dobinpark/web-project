@@ -4,7 +4,6 @@ import dobin.webproject.dto.OrderDto;
 import dobin.webproject.dto.OrderHistDto;
 import dobin.webproject.dto.OrderItemDto;
 import dobin.webproject.entity.*;
-import dobin.webproject.repository.ItemImgRepository;
 import dobin.webproject.repository.ItemRepository;
 import dobin.webproject.repository.MemberRepository;
 import dobin.webproject.repository.OrderRepository;
@@ -28,7 +27,6 @@ public class OrderService {
     private final ItemRepository itemRepository;
     private final MemberRepository memberRepository;
     private final OrderRepository orderRepository;
-    private final ItemImgRepository itemImgRepository;
 
     // 1-1. 주문
     public Long order(OrderDto orderDto, String email) {
@@ -58,9 +56,8 @@ public class OrderService {
             List<OrderItem> orderItems = order.getOrderItems();
 
             for (OrderItem orderItem : orderItems) {
-                ItemImg itemImg = itemImgRepository.findByItemIdAndRepImgYn(orderItem.getItem().getId(), "Y");
 
-                OrderItemDto orderItemDto = new OrderItemDto(orderItem, itemImg.getImgUrl());
+                OrderItemDto orderItemDto = new OrderItemDto(orderItem);
 
                 orderHistDto.addOrderItemDto(orderItemDto);
             }

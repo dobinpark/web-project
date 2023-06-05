@@ -35,20 +35,14 @@ public class ItemController {
     }
 
     @PostMapping(value = "/admin/item/new")
-    public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model,
-                          @RequestParam("itemImgFile") List<MultipartFile> itemImgFileLst) {
+    public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "item/itemForm";
         }
 
-        if (itemImgFileLst.get(0).isEmpty() && itemFormDto.getId() == null) {
-            model.addAttribute("errorMessage", "첫 번째 상품 이미지는 필수 입력 값입니다.");
-            return "item/itemForm";
-        }
-
         try {
-            itemService.saveItem(itemFormDto, itemImgFileLst);
+            itemService.saveItem(itemFormDto);
         } catch (Exception e) {
             model.addAttribute("errorMessage", "상품 등록중 에러가 발생하였습니다.");
             return "item/itemForm";
@@ -74,20 +68,14 @@ public class ItemController {
     }
 
     @PostMapping(value = "/admin/item/{itemId}")
-    public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
-                             @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model) {
+    public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "item/itemForm";
         }
 
-        if (itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null) {
-            model.addAttribute("errorMessage", "첫 번째 상품 이미지는 필수 입력 값입니다.");
-            return "item/itemForm";
-        }
-
         try {
-            itemService.updateItem(itemFormDto, itemImgFileList);
+            itemService.updateItem(itemFormDto);
         } catch (Exception e) {
             model.addAttribute("errorMessage", "상품 수정 중 에러가 발생하였습니다.");
             return "item/itemForm";
