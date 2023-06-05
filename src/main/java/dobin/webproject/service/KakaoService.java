@@ -32,7 +32,7 @@ public class KakaoService {
         String apiUrl = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + search;
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "KakaoAK 69b4a54286fee00e40a4f8b0187294a4");
+        headers.set("Authorization", "KakaoAK 6440998dba5d9ea71af03fba22c0046b");
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
         ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.GET, entity, String.class);
 
