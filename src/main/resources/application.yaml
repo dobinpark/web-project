@@ -1,3 +1,6 @@
+server:
+  port: 80
+
 spring:
   main:
     allow-bean-definition-overriding: true

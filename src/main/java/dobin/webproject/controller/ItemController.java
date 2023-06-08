@@ -35,7 +35,7 @@ public class ItemController {
     }
 
     @PostMapping(value = "/admin/item/new")
-    public String createItem(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model) {
+    public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "item/itemForm";
