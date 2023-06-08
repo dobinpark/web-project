@@ -28,7 +28,7 @@
   * 회사 근처에 맛집 지도와 맛집 리스트를 제공하여 점심 고르는 시간을 단축할 수 있는 편의성을 제공할 수 있음
 
 # 🛠 Tech Stack
-Java , Spring , HTML/CSS , Thymeleaf , Bootstrap , Gradle , MySQL , Querydsl
+![슬라이드1](https://github.com/dobinpark/web-project/assets/53501690/861909e0-ca02-4250-b4a1-6dea129e4e57)
 
 # ⚙️ Architecture
 MVC
