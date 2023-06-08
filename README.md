@@ -51,9 +51,11 @@ MVC
 # 📷 Screenshot
 **메인화면**
 <img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/7dc1b230-a0ff-4d8a-97c9-058e21df08a2"/>
-**회원가입**
-<img width="100%" src="https://user-images.githubusercontent.com/53501690/196987741-4439b1e6-c246-43d6-b52d-5fbb19924075.JPG"/>
-**매일굿즈**
-<img width="100%" src="https://user-images.githubusercontent.com/53501690/188318928-c1679ed8-dcc6-4b90-a677-7326659018d2.JPG"/>
-**맛집검색**
-<img width="100%" src="https://user-images.githubusercontent.com/53501690/196987460-3f93bb22-78cd-46bd-96ea-dec7bf575194.JPG"/>
+**매일맛집**
+<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/f4e2d722-1405-4ea3-bf8b-6d991b1188e1"/>
+**매일게시판**
+<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/436cf052-5170-43a7-ac15-1e0774638de2"/>
+**상품등록**
+<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/b441b294-ccb2-4e3f-866d-256165460040"/>
+**장바구니**
+<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/df6779da-45df-4ff8-a4c7-36dbb13020e6"/>
