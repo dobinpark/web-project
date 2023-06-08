@@ -50,7 +50,7 @@ MVC
 
 # 📷 Screenshot
 **메인화면**
-<img width="100%" src="https://user-images.githubusercontent.com/53501690/196987848-ff2db203-3de3-44cf-ac53-779ad42924c3.JPG"/>
+<img width="100%" src="https://github.com/dobinpark/web-project/assets/53501690/7dc1b230-a0ff-4d8a-97c9-058e21df08a2"/>
 **회원가입**
 <img width="100%" src="https://user-images.githubusercontent.com/53501690/196987741-4439b1e6-c246-43d6-b52d-5fbb19924075.JPG"/>
 **매일굿즈**
