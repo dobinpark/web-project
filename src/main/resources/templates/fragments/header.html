@@ -57,8 +57,8 @@
                         <li><a class="dropdown-item" href="#">인기상품</a></li>
                         -->
                         <li><a class="dropdown-item" th:href="@{/goods/items}" href="#">매일굿즈</a></li>
-                        <li><a class="dropdown-item" href="/cart">장바구니</a></li>
-                        <li><a class="dropdown-item" href="/orders">구매이력</a></li>
+                        <li><a class="dropdown-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/cart">장바구니</a></li>
+                        <li><a class="dropdown-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/orders">구매이력</a></li>
                     </ul>
                 </li>
             </div>
