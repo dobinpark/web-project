@@ -29,9 +29,6 @@
 # 🛠 Tech Stack
 ![슬라이드1](https://github.com/dobinpark/web-project/assets/53501690/861909e0-ca02-4250-b4a1-6dea129e4e57)
 
-# ⚙️ Architecture
-MVC
-
 # 🧑🏻‍💻 Team
 백엔드 개발자 1명
 
